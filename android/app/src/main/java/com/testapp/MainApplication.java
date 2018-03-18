@@ -1,4 +1,4 @@
-package com.testapp;
+package com.kasama.chatapp;
 
 import android.app.Application;
 
