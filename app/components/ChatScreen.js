@@ -23,28 +23,20 @@ Message.propTypes = {
   }).isRequired,
 };
 
-// const ChatScreen = (props) => {
-class ChatScreen extends React.PureComponent {
-  componentDidMount() {
-    this.props.getMessages();
-  }
-
-  render() {
-    return (
-      <ScrollView style={styles.chatScroll} contentContainerStyle={styles.chatScrollChildLayout} >
-        {
-          this.props.messages.map((message) => {
-            return <Message key={message.text} message={message} />
-          })
-        }
-      </ScrollView>
-    );
-  }
+const ChatScreen = (props) => {
+  return (
+    <ScrollView style={styles.chatScroll} contentContainerStyle={styles.chatScrollChildLayout} >
+      {
+        props.messages.map((message) => {
+          return <Message key={message.text} message={message} />
+        })
+      }
+    </ScrollView>
+  );
 }
 
 ChatScreen.propTypes = {
   messages: PropTypes.arrayOf(Message.propTypes.message).isRequired,
-  getMessages: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {

@@ -23,7 +23,9 @@ class TypingArea extends React.PureComponent {
   }
 
   handleSend() {
-    this.props.addMessage(this.state.message);
+    if (this.state.message.trim().length !== 0) {
+      this.props.addMessage(this.props.user, this.state.message.trim());
+    }
     this.setState({
       message: '',
     });
@@ -48,17 +50,20 @@ class TypingArea extends React.PureComponent {
   }
 }
 
-function mapStateToProps() {
-  return {};
+TypingArea.propTypes = {
+  addMessage: PropTypes.func.isRequired,
+  user: PropTypes.string.isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    user: state.userReducer.username,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
-
-TypingArea.propTypes = {
-  addMessage: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TypingArea);
 

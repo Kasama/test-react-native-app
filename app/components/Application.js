@@ -1,19 +1,24 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
+import SideMenu from 'react-native-side-menu';
 
 import ChatScreen from './ChatScreen';
+import Menu from './Menu';
+import TitleBar from './TitleBar';
 import TypingArea from './TypingArea';
 
-// class Application extends React.PureComponent {
 const Application = () => {
+  const menuNode = <Menu />;
   return (
-    <View style={styles.chatAppContainer}>
-      <ChatScreen />
-      <TypingArea />
-    </View>
+    <SideMenu menu={menuNode}>
+      <TitleBar />
+      <View style={styles.chatAppContainer}>
+        <ChatScreen />
+        <TypingArea />
+      </View>
+    </SideMenu>
   );
 }
-// export default connect(mapStateToProps, mapDispatchToProps)(Application);
 export default Application;
 
 const styles = StyleSheet.create({

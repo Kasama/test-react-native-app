@@ -1,5 +1,4 @@
 export const ADD_MESSAGE = 'A_MESSAGE';
-export const GET_MESSAGES = 'G_MSGS';
 
 const chatState = {
   messages: [ ],
@@ -18,8 +17,6 @@ const chatReducer = (state = chatState, action) => {
           },
         ],
       }
-    case GET_MESSAGES:
-      return state;
     default:
       return state;
   }

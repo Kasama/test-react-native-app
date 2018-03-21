@@ -1,23 +1,17 @@
 import {
   ADD_MESSAGE,
-  GET_MESSAGES,
 } from '../reducers/chat';
 
 export default {
-  addMessage(message) {
+  addMessage(user, message) {
     return (dispatch) => {
       dispatch({
         type: ADD_MESSAGE,
         data: {
-          user: 'Marcus',
+          user: user,
           text: message,
         },
       });
-    };
-  },
-  getMessages() {
-    return (dispatch) => {
-      dispatch({type: GET_MESSAGES});
     };
   },
 };
